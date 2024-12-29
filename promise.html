@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main"></div>
+    <script>
+        const p = new Promise((resolve, reject) => {
+            // 异步代码
+            setTimeout(() => {
+                resolve('成功')
+            }, 2000);
+        })
+        console.log('p 之前');
+        p.then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.log(err);
+        })
+        console.log('p 之后');
+    </script>
+</body>
+</html>

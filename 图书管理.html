@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .main{
+            width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .banner{
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            align-items: center;
+        }
+        .addbook{
+            background-color: rgba(17, 54, 216, 0.336);
+            border: none;
+            padding: 12px 18px;
+            border-radius: 8px;
+        }
+        .content table{
+            width: 100%;
+            margin: 20px 0;
+            text-align: center;
+            overflow: hidden;
+            border-radius: 5px;
+            border-collapse: collapse;
+        }
+        .content table tr{
+            margin: 4px 0;
+            padding: 4px 0;
+        }
+        .content table th{
+            background-color: rgba(17, 54, 216, 0.336);
+            border: 0px none rgba(17, 54, 216, 0.336);
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="banner">
+            <h2>图书管理</h2>
+            <button class="addbook" style="justify-content: flex-end;">添加</button>
+        </div>
+        <div class="content">
+            <table>
+                <tr>
+                    <th>序号</th>
+                    <th>书名</th>
+                    <th>作者</th>
+                    <th>出版社</th>
+                    <th>操作</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>西游记</td>
+                    <td>吴承恩</td>
+                    <td>人民出版社</td>
+                    <td>编辑</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>红楼梦</td>
+                    <td>曹雪芹</td>
+                    <td>人民出版社</td>
+                    <td>编辑</td>
+                </tr>
+                <tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        axios({
+            url: 'http://hmajax.itheima.net/api/register',
+            method: 'post',
+            params: {
+                username: 'itheima4657',
+                password: '123456'
+            }
+        }).then(res => {
+            const htmlStr = booklist.map((item, index) => {
+                return `${index}`
+            }).join('')
+            document.querySelector('.content').innerHTML = htmlStr
+        }).catch(err => {
+            console.log(err);
+        })
+    </script>
+</body>
+</html>

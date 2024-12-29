@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p class="my"></p>
+    <button class="btn">按钮</button>
+    <!-- https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        axios({
+            url:'http://hmajax.itheima.net/api/category/top'
+        }).then(res => {
+            console.log(res);
+
+            const secPromiseList = res.data.data.map(item => {
+                return axios({
+                    url: 'http://hmajax.itheima.net/api/category/sub',
+                    params: {
+                        id: item.id
+                    }
+                })
+            })
+            const p = Promise.all(secPromiseList)
+            p.then(res => {
+                console.log(res);
+                res.map(item => {
+                    return
+                })
+            })
+        }).catch(err => {
+            console.log(err);
+        })
+    </script>
+</body>
+</html>
